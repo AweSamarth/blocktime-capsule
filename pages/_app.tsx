@@ -1,6 +1,15 @@
 import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import { ChainId, ThirdwebProvider, useAddress, useNetworkMismatch, useNetwork } from '@thirdweb-dev/react';
+import { AppProps } from 'next/app';
+const activeChainId = ChainId.Goerli;
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <ThirdwebProvider desiredChainId={activeChainId}>
+
+  <Component {...pageProps} />
+  </ThirdwebProvider>
+
+  )
 }
+export default MyApp
